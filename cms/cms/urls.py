@@ -24,5 +24,6 @@ import administrator.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', displayController.views.home, name='home'),
-    url(r'^slideshow/', displayController.views.slideshow, name='slideshow')
+    url(r'^slideshow/', displayController.views.slideshow, name='slideshow'),
+    url(r'^menu/', displayController.views.menu, name='menu'),
 ]

@@ -8,3 +8,6 @@ def home(request):
     # return render_to_response("displayController/home.html", {'home': "Welcome home!"})
 def slideshow(request):
     return render(request, "displayController/slideshow.html", {'home': "A slideshow"})
+
+def menu(request):
+    return render(request, "displayController/menu.html", {'home': "A menu"})
