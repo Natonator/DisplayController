@@ -18,9 +18,11 @@ from django.conf.urls import include
 from django.conf.urls import patterns
 from django.contrib import admin
 import displayController.views
+import administrator.views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', displayController.views.home, name='home')
+    url(r'^$', displayController.views.home, name='home'),
+    url(r'^slideshow/', displayController.views.slideshow, name='slideshow')
 ]
