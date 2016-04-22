@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse
+from .forms import LoginForm
 
-# Create your views here.
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request)
+        if form.is_valid():
+            print "it worked"
+    else:
+        form = LoginForm
+    return render(request, "administrator/login.html", {'form': form})
