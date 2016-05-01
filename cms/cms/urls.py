@@ -23,7 +23,16 @@ import administrator.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/', administrator.views.login, name='login'),
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'), #shold redirect to the right url
+
+    url(r'^information-edit/$', administrator.views.informationEdit, name='informationEdit'),
+    url(r'^menu-edit/$', administrator.views.menuEdit, name='menuEdit'),
+    url(r'^schedule-edit/$', administrator.views.scheduleEdit, name='scheduleEdit'),
+    url(r'^settings/$', administrator.views.settings, name='setting'),
+    url(r'^slideshow-edit/$', administrator.views.slideshowEdit, name='slideshowEdit'),
+
+
     url(r'^$', displayController.views.home, name='home'),
     url(r'^slideshow/', displayController.views.slideshow, name='slideshow'),
     url(r'^menu/', displayController.views.menu, name='menu'),

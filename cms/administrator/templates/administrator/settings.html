@@ -1,0 +1,29 @@
+{% extends 'administrator/base.html' %}
+{% block content %}
+
+  <div class="row">
+
+    <div class="col-sm-4">
+      <p>
+        To choose a type of display select the type on the right and press save. To begin the display, just logout.
+      </p>
+    </div>
+    <div class="col-sm-8">
+      <form method="post" action="#">
+        {% csrf_token %}
+        <div class="form-group">
+          <select class="form-control">
+            <option>Menu</option>
+            <option>Slideshow</option>
+            <option>Schedule</option>
+            <option>information</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button class="btn">Select</button>
+        </div>
+      </form>
+    </div>
+  </div><!-- row -->
+
+{% endblock %}

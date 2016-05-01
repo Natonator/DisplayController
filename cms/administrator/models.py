@@ -7,6 +7,7 @@ class slideshow_images(models.Model):
     fileName = models.CharField(max_length=15)
     image_include = models.BooleanField(default=False)
     alt = models.CharField(max_length=100)
+    sort = models.IntegerField()
     # columns
 
 class menu_item(models.Model):
