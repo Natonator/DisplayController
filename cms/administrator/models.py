@@ -7,7 +7,7 @@ from django.db import models
 class information(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField(max_length=500)
-    img = models.FileField()
+    img = models.FileField(upload_to='documents/%Y/%m/%d')
 
 class menu_item(models.Model):
     title = models.CharField(max_length=15)

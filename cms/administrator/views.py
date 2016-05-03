@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
+# from django.template import RequestContext
 from django.http import HttpResponseRedirect
 # from .forms import LoginForm
 from .forms import *
@@ -9,12 +10,12 @@ def informationEdit(request):
     if request.user.is_authenticated():
         if request.method == 'POST':
             #process request
-            form = informationForm(request.POST)
+            form = informationForm(request.POST, request.FILES)
             if form.is_valid():
                 #select the model values
                 return render(request, "administrator/test.html")
             else:
-                return render(request, "administrator/fail.html")
+                return render(request, "administrator/fail.html", {'errors': form.errors})
         else:
             form = informationForm()
             #load the saved information

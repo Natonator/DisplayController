@@ -6,7 +6,7 @@ from administrator.choices import *
 class informationForm(forms.Form):
     title = forms.CharField(label="Title",max_length=20)
     body = forms.CharField(widget=forms.Textarea)
-    # img = forms.FileField() # files are not validating
+    img = forms.FileField(label='Select a file') # files are not validating
 
 # class menuForm(forms.Form):
 #     #need to make this dynamic
