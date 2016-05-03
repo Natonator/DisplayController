@@ -3,10 +3,11 @@
 
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-      <form method="post" action="#">
+      <form method="post" action="/information-edit/">
         {% csrf_token %}
         <div class="form-group">
-          <label for="title" class="">Title</label>
+          {{form}}
+          <!-- <label for="title" class="">Title</label>
           <input type="text" class="form-control" name="title" value="">
         </div>
         <div class="form-group">
@@ -17,8 +18,8 @@
         </div>
         <div class="form-group">
           <!-- add thumbnail of image -->
-          <label for="picture" class="">Image</label>
-          <input type="file" class="form-control" name="picture">
+          <!-- <label for="picture" class="">Image</label>
+          <input type="file" class="form-control" name="picture"> -->
         </div>
         <div class="form-group">
           <input type="submit" class="btn btn-primary">
