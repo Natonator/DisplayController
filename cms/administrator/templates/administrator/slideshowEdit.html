@@ -5,7 +5,13 @@
     <div class="col-sm-12">
       <form method="post" action="#">
         {% csrf_token %}
-        <div class="col-sm-4">
+        {% for form in formset %}
+          <div class="col-sm-4">
+            <!-- include existing image thumbnail -->
+            {{form}}
+          </div>
+        {% endfor %}
+        <!-- <div class="col-sm-4">
           <img src="http://hydra-media.cursecdn.com/ark.gamepedia.com/thumb/2/2c/Allosaurus_Dossier.png/314px-Allosaurus_Dossier.png?version=be6fe749f2a878f2df032368695aabd9" class="">
           <label for="alt1">Alt description</label>
           <input type="text" name="alt1">
@@ -52,7 +58,7 @@
           <input type="checkbox" name="check6" id="check6">
           <label for="order6">Sort Order</label>
           <input type="number" name="order6">
-        </div>
+        </div> -->
       </form>
     </div>
   </div><!-- row -->

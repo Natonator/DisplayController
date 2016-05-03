@@ -3,7 +3,9 @@ from django.http import HttpResponse
 # from django.template import RequestContext
 from django.http import HttpResponseRedirect
 # from .forms import LoginForm
+from django.forms import formset_factory
 from .forms import *
+from .models import *
 
 
 def informationEdit(request):
@@ -35,9 +37,20 @@ def menuEdit(request):
 
 def scheduleEdit(request):
     if request.user.is_authenticated():
-        #get the google token
-        #get the calendar url
-        return render(request, "administrator/scheduleEdit.html")
+        if request.method == 'POST':
+            #process request
+            form = scheduleForm(request.POST)
+            if form.is_valid():
+                #select the model values
+                return render(request, "administrator/test.html")
+            else:
+                return render(request, "administrator/fail.html", {'errors': form.errors})
+        else:
+            form = scheduleForm()
+            #load the saved information
+            #load the path of the Images
+            #load the title
+        return render(request, "administrator/scheduleEdit.html", {'form': form})
     else:
         return HttpResponseRedirect('/')
 
@@ -58,9 +71,15 @@ def settings(request):
 
 def slideshowEdit(request):
     if request.user.is_authenticated():
-        #get the paths of all the images
-        #get all alt tabs
-        #get display order
-        return render(request, "administrator/slideshowEdit.html")
+        if request.method == 'POST':
+            slideShowFormSet = formset_factory(request.POST, request.FILE)
+            if slideShowFormSet.is_valid():
+                return render(request, "administrator/test.html")
+            else:
+                return render(request, "administrator/fail.html", {'errors': slideShowFormSet.errors})
+        else:
+            # form = SlideShowForm() need to use form set
+            slideShowFormSet = formset_factory(SlideShowForm, extra=4)
+            return render(request, "administrator/slideshowEdit.html", {'formset': slideShowFormSet})
     else:
         return HttpResponseRedirect('/')

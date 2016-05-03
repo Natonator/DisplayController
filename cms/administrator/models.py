@@ -16,13 +16,13 @@ class menu_item(models.Model):
     # columns
 
 class slideshow_images(models.Model):
-    fileName = models.CharField(max_length=15)
+    fileName = models.FileField(max_length=15)
     image_include = models.BooleanField(default=False)
     alt = models.CharField(max_length=100)
     sort = models.IntegerField()
     # columns
 
 class schedule(models.Model):
-    url = models.CharField(max_length=36)
-    api_key = models.CharField(max_length=36)
+    iframeCode = models.CharField(max_length=100)
+    include = models.BooleanField(default=False)
     # columns
