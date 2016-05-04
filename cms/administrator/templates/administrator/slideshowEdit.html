@@ -3,14 +3,25 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <form method="post" action="#">
+      <form method="post" action="/slideshow-edit/" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ formset.management_form }}
         {% for form in formset %}
           <div class="col-sm-4">
             <!-- include existing image thumbnail -->
             {{form}}
           </div>
         {% endfor %}
+          <div class="col-sm-4">
+            <input type="submit" class="btn btn-primary">
+          </div>
+
+          {% for model in models %}
+            <span>
+              <p>here is one</p>
+              {{model}}
+            </span>
+          {% endfor %}
         <!-- <div class="col-sm-4">
           <img src="http://hydra-media.cursecdn.com/ark.gamepedia.com/thumb/2/2c/Allosaurus_Dossier.png/314px-Allosaurus_Dossier.png?version=be6fe749f2a878f2df032368695aabd9" class="">
           <label for="alt1">Alt description</label>

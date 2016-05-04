@@ -1,4 +1,5 @@
 from django import forms
+from .models import *
 from administrator.choices import *
 
 
@@ -8,14 +9,12 @@ class informationForm(forms.Form):
     img = forms.FileField(label='Select a file')
 
 class menuForm(forms.Form):
-    #need to make this dynamic
-    #look at model choice field
     description = forms.CharField(max_length=20)
     price = forms.FloatField()
     include = forms.BooleanField()
 
 class scheduleForm(forms.Form):
-    iframeCode = forms.CharField(max_length=100)
+    iframeCode = forms.CharField(max_length=500)
     include = forms.BooleanField()
 
 class settingsForm(forms.Form):
@@ -26,8 +25,9 @@ class SlideShowForm(forms.Form):
     def __name__(self):
         return self.__class__.__name__
     #create dynamic number of choices etc like the menu
-    fileName = forms.FileField()
+    fileName = forms.FileField(label='Select a file')
     image_include = forms.BooleanField()
     alt = forms.CharField(max_length=100)
     sort = forms.IntegerField()
+    pkId = forms.IntegerField(widget=forms.HiddenInput(), initial=-1)
     # form
